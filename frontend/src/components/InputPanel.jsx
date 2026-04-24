@@ -26,7 +26,8 @@ export default function InputPanel({ onResult, onError, token }) {
       const headers = { 'Content-Type': 'application/json' };
       if (token) headers['Authorization'] = `Bearer ${token}`;
 
-      const res = await fetch('/bfhl', {
+      const base = import.meta.env.VITE_API_URL || '';
+      const res = await fetch(`${base}/bfhl`, {
         method: 'POST',
         headers,
         body: JSON.stringify({ data }),

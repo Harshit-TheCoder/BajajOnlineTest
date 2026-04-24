@@ -55,8 +55,9 @@ export default function App() {
   };
 
   const handleLogout = async () => {
+    const base = import.meta.env.VITE_API_URL || '';
     try {
-      await fetch('/auth/logout', {
+      await fetch(`${base}/auth/logout`, {
         method: 'POST',
         headers: { Authorization: `Bearer ${session?.token}` },
       });
